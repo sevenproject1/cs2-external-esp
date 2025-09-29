@@ -1,90 +1,150 @@
-# 🎡 CS2 External ESP
+# CS2 Mini Radar - Educational Project
 
-Simple external ESP for Counter-Strike 2 using the GDI overlay to render esp boxes on top of CS2, highlighting your enemies and teammates including their health and name. If you want to check out Discord overlay rendering check the [discord-overlay-esp](https://github.com/IMXNOOBX/cs2-external-esp/tree/discord-overlay) tree.
+A real-time radar overlay for Counter-Strike 2 created for educational purposes.
 
-### Make sure you 🌟 the project if you like it ❤
+## ⚠️ IMPORTANT DISCLAIMER
 
-## Video Showcase
+**This tool is created for educational and research purposes only.** 
 
-[![Cs2ESP](.github/image.png)](https://youtu.be/SV_lddIxQ5w)
-## 🌳 Simple Use
+- Using external tools with Counter-Strike 2 may violate the game's Terms of Service
+- This could result in VAC bans or other account penalties
+- Use at your own risk
+- The author is not responsible for any consequences
 
-* Releases have been removed in order to be allowed in UnknownCheats, so the binaries are published there.
-1. Go to the UnknownCheats post [**cs2-external-esp**](https://www.unknowncheats.me/forum/counter-strike-2-a/600259-cs2-external-esp.html)
-2. Click on the binary file you want to download and download it.
-3. Open the binary file and CS2 (Doesn't matter which one goes first (If you are having issues with ESP not showing, wait to open till in game))
-❗ Make sure your game is in full screen windowed
+## Features
 
-## 💧 Repository Update
+- Real-time enemy position tracking
+- Team member display (toggleable)
+- Multiple CS2 map support
+- Clean, modern radar interface
+- FPS counter and connection status
+- Grid overlay for better positioning
 
-* If you have updated the offsets, and want to share it with everyone follow these steps
+## Requirements
 
-1. Create a [pull request](https://github.com/IMXNOOBX/cs2-external-esp/pulls) and provide just the `offsets/offsets.json` updated file in the pull request. If there are any other files modified it will be denied.
+- Windows OS (for memory access)
+- Python 3.7+
+- Counter-Strike 2 installed and running
+- Administrator privileges (for memory reading)
 
-2. Provide a valid image that the esp is working on the latest version on the game
+## Installation
 
-3. The commit will be merged into the main branch once verified and all the users will be able to update it!
+1. Clone or download this project
+2. Install Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## ✔ Manually Update
+## Usage
 
-* To manually update the ESP offsets I have included an offsets.json file which will be created once opened.
+1. Start Counter-Strike 2
+2. Run the radar as administrator:
+   ```bash
+   python main.py
+   ```
 
-Currently there are two ways to get the latest offsets.
-1. Manually updating them
-1.1a Go to this [UnknownCheats thread](https://www.unknowncheats.me/forum/counter-strike-2-a/576077-counter-strike-2-reversal-structs-offsets.html) and find the latest offsets posted by the community
-1.1b Or go to the [cs2-dumper](https://github.com/a2x/cs2-dumper) repository and find the latest offsets
+## Controls
 
-1.2 You will find something like this
+- **ESC** - Exit radar
+- **G** - Toggle grid display
+- **T** - Toggle teammate display
 
-```cpp
-#define dwLocalPlayer 0x1715418 // This is hexadecimal
+## How It Works
+
+The radar works by:
+
+1. **Memory Reading**: Connects to the CS2 process and reads game memory
+2. **Entity Parsing**: Extracts player positions, health, and team information
+3. **Coordinate Conversion**: Converts 3D world coordinates to 2D radar positions
+4. **Real-time Display**: Updates the radar display at 60 FPS
+
+## Technical Details
+
+### Memory Offsets
+
+The application uses current CS2 memory offsets to access:
+- Player entity list
+- Local player information
+- World coordinates
+- Health and team data
+
+### Supported Maps
+
+- de_dust2
+- de_mirage  
+- de_inferno
+- de_cache
+
+Additional maps can be added by updating the `MAP_BOUNDS` in `offsets.py`.
+
+## Project Structure
+
+```
+cs2-mini-radar/
+├── main.py              # Main application entry point
+├── memory_reader.py     # CS2 memory access functionality
+├── entity_parser.py     # Game entity processing
+├── radar_gui.py         # Pygame-based radar display
+├── offsets.py           # CS2 memory offsets and constants
+├── requirements.txt     # Python dependencies
+└── README.md           # This file
 ```
 
-1.3 You will have to translate it to decimal and put it in the offsets file next to the ESP executable like so, you can use [**this website**](https://www.rapidtables.com/convert/number/hex-to-decimal.html)
+## Educational Value
 
-```json
-{
-    "dwLocalPlayer": 24204312, // To decimal
-    ...
-}	
-```
+This project demonstrates:
 
-2. Automatically updating them using a script
-2.1 Download the `update_offsets.py` script and `offsets.json` file from [the offsets folder](https://github.com/IMXNOOBX/cs2-external-esp/tree/main/offsets) in this repository
-2.2 Put the `update_offsets.py` script next to the `offsets.json` file found next to your ESP executable
-2.3 Run `update_offsets.py`, the offsets will be automatically written to `offsets.json`
+- **Memory Management**: Reading external process memory
+- **Game Development**: Understanding game engine data structures
+- **Real-time Systems**: Processing and displaying data at high frame rates
+- **Coordinate Systems**: Converting between 3D world and 2D screen coordinates
+- **GUI Programming**: Creating responsive user interfaces
 
-## 📘 Developer Instructions
+## Troubleshooting
 
-1. Build the program using **Visual Studio 2022**
-	- Build: **`x64 - Release`**
+### "CS2 process not found"
+- Make sure Counter-Strike 2 is running
+- Run the radar as administrator
+- Check that the process name matches your CS2 installation
 
-2. Locate your binary file in the folder `<arch>/<configuration>`, e.g., `x64/Release`.
+### "Failed to get client.dll"
+- Ensure CS2 is fully loaded (not just in menu)
+- Try running as administrator
+- Check if antivirus is blocking memory access
 
-* ❕ In case the offsets get outdated (Every game update), you could check UnnamedZ03's repository for the updated ones [here](https://github.com/UnnamedZ03/CS2-external-base/blob/58466cd7feba2fbcf5ab49b0dbbdc7bcd6d7df58/source/CSSPlayer.hpp#L3-L15)
+### Radar shows no players
+- Verify you're in an active game (not menu/lobby)
+- Check that the memory offsets are current
+- Ensure the map is supported
 
-## 💫 Credits
+## Updating Offsets
 
-* [UnnamedZ03](https://github.com/UnnamedZ03) for providing [offsets](https://www.unknowncheats.me/forum/3846642-post734.html) and guide with his [CS2-external-base](https://github.com/UnnamedZ03/CS2-external-base)
-* [a2x](https://github.com/a2x) for his [offset dumper](https://github.com/a2x/cs2-dumper) and constant updates to it
-* [ifBars](https://github.com/ifBars) for his [contributions](https://github.com/IMXNOOBX/cs2-external-esp/pull/37) to the project and ideas
-* [Bekston](https://github.com/Bekston) for his [contributions](https://github.com/IMXNOOBX/cs2-external-esp/pull/20) to the project and ideas
-* [Apxaey](https://github.com/Apxaey) for releasing an easy way to implement [handle hijacking](https://github.com/Apxaey/Handle-Hijacking-Anti-Cheat-Bypass) 
-* The UnknownCheats comumnity for their research!
+CS2 updates frequently change memory offsets. To update:
 
-# 🔖 License & Copyright
+1. Find current offsets using tools like cs2-dumper
+2. Update values in `offsets.py`
+3. Test with the new game version
 
-This project is licensed under [**CC BY-NC 4.0**](https://creativecommons.org/licenses/by-nc/4.0/).
-```diff
-+ You are free to:
-	• Share: Copy and redistribute the material in any medium or format.
-	• Adapt: Remix, transform, and build upon the material.
-+ Under the following terms:
-	• Attribution: You must give appropriate credit, provide a link to the original source repository, and indicate if changes were made.
-	• Non-Commercial: You may not use the material for commercial purposes.
-- You are not allowed to:
-	• Sell: This license forbids selling original or modified material for commercial purposes.
-	• Sublicense: This license forbids sublicensing original or modified material.
-```
-### ©️ Copyright
-The content of this project is ©️ by [IMXNOOBX](https://github.com/IMXNOOBX) and the respective contributors. See the [LICENSE.md](LICENSE.md) file for details.
+## Legal and Ethical Considerations
+
+- This tool is for educational purposes only
+- Do not use in competitive matches
+- Respect other players and fair play
+- Consider the impact on game integrity
+- Always follow your local laws and game ToS
+
+## Contributing
+
+This is an educational project. Contributions should focus on:
+- Code quality improvements
+- Educational documentation
+- Bug fixes
+- Performance optimizations
+
+## License
+
+This project is provided as-is for educational purposes. Use responsibly.
+
+---
+
+**Remember**: The goal of this project is learning, not gaining unfair advantages in games. Use it to understand game development, memory management, and real-time systems programming.
