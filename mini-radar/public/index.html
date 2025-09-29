@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Radar</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #0e0f12;
+      color: #eaecef;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+    }
+    .wrap {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      grid-gap: 16px;
+      padding: 16px;
+      box-sizing: border-box;
+      height: 100%;
+    }
+    .panel {
+      background: #15171c;
+      border: 1px solid #22252b;
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .radar-panel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    canvas {
+      background: radial-gradient(ellipse at center, #0f1115 0%, #0a0b0d 100%);
+      border: 1px solid #2a2f37;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.3), inset 0 0 40px rgba(0,255,153,0.06);
+    }
+    .legend {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 8px;
+    }
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+  </style>
+  <script defer src="/radar.js"></script>
+  <script defer src="/ws.js"></script>
+  <script defer src="/main.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="Mini radar demo with WebSocket updates" />
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%2300ff99' /></svg>">
+  <style>body{font-family:Inter,system-ui}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel">
+      <h2 style="margin-top:0">Mini Radar</h2>
+      <div class="legend">
+        <span><i class="dot" style="background:#34d399"></i>CT</span>
+        <span><i class="dot" style="background:#f87171"></i>T</span>
+        <span><i class="dot" style="background:#e5e7eb;border:1px solid #111"></i>Yaw</span>
+      </div>
+      <div id="info" style="margin-top:8px;font-size:12px;opacity:0.8"></div>
+    </div>
+    <div class="panel radar-panel">
+      <canvas id="radar" width="600" height="600"></canvas>
+    </div>
+  </div>
+</body>
+</html>
+
