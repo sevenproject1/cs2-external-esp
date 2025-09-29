@@ -1,0 +1,25 @@
+# CS2 Mini Radar - Educational Project Requirements
+# ================================================
+# 
+# This file contains the Python dependencies required to run
+# the CS2 Mini Radar educational project.
+#
+# Install with: pip install -r requirements.txt
+#
+# IMPORTANT: This project is for educational purposes only!
+# Do not use in actual gameplay.
+
+# Core dependencies
+psutil>=5.9.0          # Process and system utilities for memory reading simulation
+tkinter                # GUI framework (usually included with Python)
+
+# Optional dependencies for enhanced features
+# (uncomment if you want additional functionality)
+# pillow>=9.0.0        # Image processing (for enhanced graphics)
+# numpy>=1.21.0        # Numerical computing (for advanced calculations)
+# matplotlib>=3.5.0    # Plotting and visualization (for data analysis)
+
+# Development dependencies (for contributors)
+# pytest>=7.0.0        # Testing framework
+# black>=22.0.0         # Code formatter
+# flake8>=4.0.0         # Linting tool

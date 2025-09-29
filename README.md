@@ -1,90 +1,239 @@
-# 🎡 CS2 External ESP
+# CS2 Mini Radar - Educational Project
 
-Simple external ESP for Counter-Strike 2 using the GDI overlay to render esp boxes on top of CS2, highlighting your enemies and teammates including their health and name. If you want to check out Discord overlay rendering check the [discord-overlay-esp](https://github.com/IMXNOOBX/cs2-external-esp/tree/discord-overlay) tree.
+## 🎓 Project Overview
 
-### Make sure you 🌟 the project if you like it ❤
+This is an **educational radar application** for Counter-Strike 2 (CS2) designed for school work and learning purposes. The project demonstrates concepts of:
 
-## Video Showcase
+- Real-time data visualization
+- GUI development with Python
+- Memory reading concepts
+- Game development principles
+- Threading and concurrent programming
+- Data structures and algorithms
 
-[![Cs2ESP](.github/image.png)](https://youtu.be/SV_lddIxQ5w)
-## 🌳 Simple Use
+## ⚠️ Important Disclaimers
 
-* Releases have been removed in order to be allowed in UnknownCheats, so the binaries are published there.
-1. Go to the UnknownCheats post [**cs2-external-esp**](https://www.unknowncheats.me/forum/counter-strike-2-a/600259-cs2-external-esp.html)
-2. Click on the binary file you want to download and download it.
-3. Open the binary file and CS2 (Doesn't matter which one goes first (If you are having issues with ESP not showing, wait to open till in game))
-❗ Make sure your game is in full screen windowed
+**THIS PROJECT IS FOR EDUCATIONAL PURPOSES ONLY!**
 
-## 💧 Repository Update
+- ❌ **DO NOT** use in actual gameplay
+- ❌ **DO NOT** use to gain competitive advantage
+- ❌ **DO NOT** distribute for cheating purposes
+- ✅ **ONLY** use for learning and educational purposes
+- ✅ **ONLY** use in controlled educational environments
 
-* If you have updated the offsets, and want to share it with everyone follow these steps
+Using this software in actual gameplay may violate game terms of service and result in account bans.
 
-1. Create a [pull request](https://github.com/IMXNOOBX/cs2-external-esp/pulls) and provide just the `offsets/offsets.json` updated file in the pull request. If there are any other files modified it will be denied.
+## 🚀 Features
 
-2. Provide a valid image that the esp is working on the latest version on the game
+### Basic Radar (`cs2_radar.py`)
+- Real-time enemy position tracking
+- Health indicators
+- Distance calculations
+- Team color coding
+- Configurable radar scale
+- Process detection simulation
 
-3. The commit will be merged into the main branch once verified and all the users will be able to update it!
+### Enhanced Radar (`enhanced_radar.py`)
+- Advanced visualization features
+- Weapon information display
+- Direction indicators
+- Health bars with color coding
+- Statistics tracking
+- Settings persistence
+- Modern dark theme UI
 
-## ✔ Manually Update
+### Memory Reader (`memory_reader.py`)
+- Educational memory reading concepts
+- Process detection
+- Offset management
+- Data structure examples
+- Safe memory access patterns
 
-* To manually update the ESP offsets I have included an offsets.json file which will be created once opened.
+## 📋 Requirements
 
-Currently there are two ways to get the latest offsets.
-1. Manually updating them
-1.1a Go to this [UnknownCheats thread](https://www.unknowncheats.me/forum/counter-strike-2-a/576077-counter-strike-2-reversal-structs-offsets.html) and find the latest offsets posted by the community
-1.1b Or go to the [cs2-dumper](https://github.com/a2x/cs2-dumper) repository and find the latest offsets
+### System Requirements
+- Python 3.7 or higher
+- Windows/Linux/macOS
+- tkinter (usually included with Python)
 
-1.2 You will find something like this
-
-```cpp
-#define dwLocalPlayer 0x1715418 // This is hexadecimal
+### Python Dependencies
+```bash
+pip install psutil
 ```
 
-1.3 You will have to translate it to decimal and put it in the offsets file next to the ESP executable like so, you can use [**this website**](https://www.rapidtables.com/convert/number/hex-to-decimal.html)
+## 🛠️ Installation
 
-```json
-{
-    "dwLocalPlayer": 24204312, // To decimal
-    ...
-}	
+1. **Clone or download the project files**
+   ```bash
+   git clone <repository-url>
+   cd cs2-radar-educational
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the application**
+   ```bash
+   # Basic radar
+   python cs2_radar.py
+   
+   # Enhanced radar (recommended)
+   python enhanced_radar.py
+   ```
+
+## 📖 Usage
+
+### Basic Radar
+1. Run `python cs2_radar.py`
+2. Click "Start Radar" to begin simulation
+3. Adjust scale and refresh rate as needed
+4. Observe simulated enemy positions
+
+### Enhanced Radar
+1. Run `python enhanced_radar.py`
+2. Click "🚀 Start Radar" to begin
+3. Use "⚙️ Settings" to customize display
+4. View statistics and player information
+5. Adjust radar scale and refresh rate
+
+### Settings
+- **Show Health Bars**: Display health above players
+- **Show Distance**: Show distance in meters
+- **Show Weapon Info**: Display weapon names
+- **Show Direction Arrows**: Show player facing direction
+- **Color Settings**: Customize enemy/teammate colors
+- **Refresh Rate**: Control update frequency
+
+## 🎯 Educational Objectives
+
+This project teaches:
+
+### Programming Concepts
+- Object-oriented programming
+- GUI development with tkinter
+- Threading and concurrency
+- Data structures and algorithms
+- Error handling and logging
+
+### Game Development
+- Memory reading concepts
+- Real-time data processing
+- Game state management
+- Coordinate transformations
+- UI/UX design principles
+
+### Computer Science
+- Process memory management
+- Data visualization
+- Real-time systems
+- Software architecture
+- Performance optimization
+
+## 📚 Learning Resources
+
+### Memory Reading
+- [Windows API Documentation](https://docs.microsoft.com/en-us/windows/win32/api/)
+- [Process Memory Concepts](https://en.wikipedia.org/wiki/Process_memory)
+- [Memory Management in Operating Systems](https://www.tutorialspoint.com/operating_system/os_memory_management.htm)
+
+### Game Development
+- [Game Programming Patterns](https://gameprogrammingpatterns.com/)
+- [Real-time Systems](https://en.wikipedia.org/wiki/Real-time_computing)
+- [Computer Graphics](https://en.wikipedia.org/wiki/Computer_graphics)
+
+### Python GUI Development
+- [tkinter Documentation](https://docs.python.org/3/library/tkinter.html)
+- [Python Threading](https://docs.python.org/3/library/threading.html)
+- [GUI Programming with Python](https://realpython.com/python-gui-tkinter/)
+
+## 🔧 Technical Details
+
+### Architecture
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   GUI Layer     │    │  Data Processing │    │  Memory Reader  │
+│   (tkinter)     │◄──►│     Layer        │◄──►│     Layer       │
+│                 │    │                  │    │                 │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
 ```
 
-2. Automatically updating them using a script
-2.1 Download the `update_offsets.py` script and `offsets.json` file from [the offsets folder](https://github.com/IMXNOOBX/cs2-external-esp/tree/main/offsets) in this repository
-2.2 Put the `update_offsets.py` script next to the `offsets.json` file found next to your ESP executable
-2.3 Run `update_offsets.py`, the offsets will be automatically written to `offsets.json`
+### Key Components
+- **Player Class**: Represents game entities
+- **MemoryReader**: Handles process memory access
+- **RadarCanvas**: Manages radar visualization
+- **SettingsManager**: Handles configuration
+- **StatisticsTracker**: Monitors performance
 
-## 📘 Developer Instructions
+### Data Flow
+1. Process detection and memory reading
+2. Data parsing and validation
+3. Coordinate transformation
+4. Visual rendering
+5. User interaction handling
 
-1. Build the program using **Visual Studio 2022**
-	- Build: **`x64 - Release`**
+## 🛡️ Safety Features
 
-2. Locate your binary file in the folder `<arch>/<configuration>`, e.g., `x64/Release`.
+### Educational Safeguards
+- Clear disclaimers and warnings
+- Educational purpose statements
+- No actual game modification
+- Simulated data for learning
+- Controlled environment design
 
-* ❕ In case the offsets get outdated (Every game update), you could check UnnamedZ03's repository for the updated ones [here](https://github.com/UnnamedZ03/CS2-external-base/blob/58466cd7feba2fbcf5ab49b0dbbdc7bcd6d7df58/source/CSSPlayer.hpp#L3-L15)
+### Code Safety
+- Error handling and validation
+- Resource cleanup
+- Thread safety measures
+- Memory leak prevention
+- Graceful shutdown
 
-## 💫 Credits
+## 📊 Performance
 
-* [UnnamedZ03](https://github.com/UnnamedZ03) for providing [offsets](https://www.unknowncheats.me/forum/3846642-post734.html) and guide with his [CS2-external-base](https://github.com/UnnamedZ03/CS2-external-base)
-* [a2x](https://github.com/a2x) for his [offset dumper](https://github.com/a2x/cs2-dumper) and constant updates to it
-* [ifBars](https://github.com/ifBars) for his [contributions](https://github.com/IMXNOOBX/cs2-external-esp/pull/37) to the project and ideas
-* [Bekston](https://github.com/Bekston) for his [contributions](https://github.com/IMXNOOBX/cs2-external-esp/pull/20) to the project and ideas
-* [Apxaey](https://github.com/Apxaey) for releasing an easy way to implement [handle hijacking](https://github.com/Apxaey/Handle-Hijacking-Anti-Cheat-Bypass) 
-* The UnknownCheats comumnity for their research!
+### Optimization Features
+- Configurable refresh rates
+- Efficient rendering
+- Memory management
+- Thread optimization
+- Resource cleanup
 
-# 🔖 License & Copyright
+### System Requirements
+- Minimal CPU usage
+- Low memory footprint
+- Responsive UI
+- Smooth animations
+- Stable operation
 
-This project is licensed under [**CC BY-NC 4.0**](https://creativecommons.org/licenses/by-nc/4.0/).
-```diff
-+ You are free to:
-	• Share: Copy and redistribute the material in any medium or format.
-	• Adapt: Remix, transform, and build upon the material.
-+ Under the following terms:
-	• Attribution: You must give appropriate credit, provide a link to the original source repository, and indicate if changes were made.
-	• Non-Commercial: You may not use the material for commercial purposes.
-- You are not allowed to:
-	• Sell: This license forbids selling original or modified material for commercial purposes.
-	• Sublicense: This license forbids sublicensing original or modified material.
-```
-### ©️ Copyright
-The content of this project is ©️ by [IMXNOOBX](https://github.com/IMXNOOBX) and the respective contributors. See the [LICENSE.md](LICENSE.md) file for details.
+## 🤝 Contributing
+
+This is an educational project. If you want to contribute:
+
+1. **Educational Focus**: Keep contributions educational
+2. **Code Quality**: Follow Python best practices
+3. **Documentation**: Document all changes
+4. **Testing**: Test thoroughly
+5. **Ethics**: Maintain educational purpose
+
+## 📄 License
+
+This project is for educational purposes only. Please respect game terms of service and use responsibly.
+
+## 🙏 Acknowledgments
+
+- Counter-Strike 2 by Valve Corporation
+- Python tkinter community
+- Educational programming resources
+- Open source memory reading projects (for reference)
+
+## 📞 Support
+
+For educational questions or issues:
+- Check the documentation
+- Review the code comments
+- Consult educational resources
+- Ask your instructor
+
+---
+
+**Remember: This is an educational project. Use responsibly and ethically!**
