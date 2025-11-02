@@ -1,0 +1,67 @@
+{
+    "display": {
+        "screen_width": 1920,
+        "screen_height": 1080,
+        "target_fps": 144,
+        "window_always_on_top": true
+    },
+    "features": {
+        "box_esp": true,
+        "skeleton_esp": true,
+        "health_bars": true,
+        "player_names": true,
+        "distance_info": true,
+        "snaplines": true,
+        "head_circles": true,
+        "show_teammates": false,
+        "crosshair": true
+    },
+    "colors": {
+        "enemy": [255, 0, 0],
+        "teammate": [0, 255, 0],
+        "box": [255, 255, 255],
+        "skeleton": [200, 200, 200],
+        "health_bg": [50, 50, 50],
+        "health_high": [0, 255, 0],
+        "health_mid": [255, 165, 0],
+        "health_low": [255, 0, 0],
+        "text": [255, 255, 255],
+        "snapline": [255, 255, 0],
+        "crosshair": [0, 255, 255]
+    },
+    "rendering": {
+        "box_thickness": 2,
+        "skeleton_thickness": 2,
+        "snapline_thickness": 1,
+        "health_bar_width": 4,
+        "head_circle_radius": 8,
+        "crosshair_size": 10,
+        "crosshair_gap": 5
+    },
+    "text": {
+        "font_small": 16,
+        "font_medium": 20,
+        "font_large": 24,
+        "show_shadow": true
+    },
+    "performance": {
+        "max_render_distance": 10000,
+        "update_rate_ms": 2,
+        "skip_offscreen_entities": true
+    },
+    "hotkeys": {
+        "toggle_box": "F1",
+        "toggle_skeleton": "F2",
+        "toggle_snaplines": "F3",
+        "toggle_health": "F4",
+        "toggle_names": "F5",
+        "toggle_teammates": "F6",
+        "exit": "END"
+    },
+    "advanced": {
+        "aim_prediction": false,
+        "bone_optimization": true,
+        "multi_threading": false,
+        "debug_mode": false
+    }
+}
